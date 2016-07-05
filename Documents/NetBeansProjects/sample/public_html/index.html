@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Sample</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function increment(str, c)
+            {
+                var i = parseInt(str);
+                i++;
+                document.getElementById("count"+c).innerHTML = i;
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <table style="width: 25%" id="table">
+                <tr>
+                    <td id="data0">Nissan Skyline</td>
+                    <td><button id="0" onclick="increment(document.getElementById('count0').innerHTML, 0); sort()">VOTE</button></td>
+                    <td id="count0">0</td>
+                </tr>
+                <tr>
+                    <td id="data1">Ford GT40</td>
+                    <td><button id="1" onclick="increment(document.getElementById('count1').innerHTML, 1); sort()">VOTE</button></td>
+                    <td id="count1">0</td>
+                </tr>
+                <tr>
+                    <td id="data2">Toyota Supra</td>
+                    <td><button id="2" onclick="increment(document.getElementById('count2').innerHTML, 2); sort()">VOTE</button></td>
+                    <td id="count2">0</td>
+                </tr>
+                <tr>
+                    <td id="data3">Toyota Prius</td>
+                    <td><button id="3" onclick="increment(document.getElementById('count3').innerHTML, 3); sort()">VOTE</button></td>
+                    <td id="count3">0</td>
+                </tr>
+                <tr>
+                    <td id="data4">Dodge Challenger</td>
+                    <td><button id="demo4" onclick="increment(document.getElementById('count4').innerHTML, 4); sort()">VOTE</button></td>
+                    <td id="count4">0</td>
+                </tr>
+            </table>
+            <script>
+                function sort()
+                {
+                    var a = [   parseInt(document.getElementById('count0').innerHTML),
+                                parseInt(document.getElementById('count1').innerHTML),
+                                parseInt(document.getElementById('count2').innerHTML),
+                                parseInt(document.getElementById('count3').innerHTML),
+                                parseInt(document.getElementById('count4').innerHTML)
+                            ];
+                    var b = [   document.getElementById('data0').innerHTML,
+                                document.getElementById('data1').innerHTML,
+                                document.getElementById('data2').innerHTML,
+                                document.getElementById('data3').innerHTML,
+                                document.getElementById('data4').innerHTML
+                            ];        
+                    var i = 0;
+                    var j = 0;
+                    var t,temp;
+                    for(i = 0;i < 5;i++)
+                    {
+                        for(j = i+1;j < 5;j++)
+                        {
+                            if(a[i]<a[j])
+                            {
+                              t = a[i];
+                              a[i]=a[j];
+                              a[j]=t;
+                              document.getElementById("count"+i).innerHTML = a[i];
+                              document.getElementById("count"+j).innerHTML = a[j];
+                              
+                              temp = b[i];
+                              b[i] = b[j];
+                              b[j] = temp;
+                              document.getElementById("data"+i).innerHTML = b[i];
+                              document.getElementById("data"+j).innerHTML = b[j];
+                            }
+                        }
+                    }
+                }
+//                document.getElementById('table').innerHTML = sort();
+            </script>
+        </div>
+    </body>
+</html>
